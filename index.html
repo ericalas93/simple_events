@@ -1,1 +1,204 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f4eb; /* Warm background color */
+      }
+
+      .header {
+        background-color: #eed6c9; /* Subdued earthy color */
+        padding: 20px;
+        text-align: center;
+      }
+
+      .timeline {
+        margin: 20px;
+      }
+
+      .event {
+        position: relative;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff; /* White background */
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      }
+
+      .event .time {
+        font-weight: bold;
+        font-size: 18px;
+        color: #ad7c64; /* Earthy color */
+      }
+
+      .event .title {
+        margin-top: 10px;
+        font-size: 24px;
+        color: #5d443f; /* Dark brown color */
+        font-family: "Pacifico", cursive; /* Handwritten font */
+      }
+
+      .event .content {
+        display: none;
+        margin-top: 10px;
+        color: #5d443f; /* Dark brown color */
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .event.active .content {
+        display: block;
+      }
+
+      .event.redacted {
+        background-color: #f2f2f2; /* Redacted event background color */
+        cursor: default;
+      }
+
+      .event.redacted .title {
+        color: #aaa; /* Redacted event title color */
+      }
+
+      .event.redacted .title,
+      .event.redacted .content p {
+        filter: blur(5px); /* Apply blur effect to text */
+      }
+
+      .event.redacted .icon {
+        display: none; /* Hide icon for redacted events */
+      }
+
+      .event.redacted:hover {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Restore box-shadow on hover for redacted events */
+      }
+
+      .event .icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #ad7c64; /* Earthy color */
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .event.active .icon {
+        transform: rotate(180deg);
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      function toggleAccordion(event) {
+        if (!event.currentTarget.classList.contains("redacted")) {
+          debugger;
+          const accordion = event.target.closest(".event");
+          accordion.classList.toggle("active");
+          const icon = accordion.querySelector(".icon");
+          icon.classList.toggle("fa-chevron-down");
+          icon.classList.toggle("fa-chevron-up");
+        }
+      }
+
+      function checkTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+
+        const events = document.querySelectorAll(".event");
+        events.forEach((event) => {
+          const time = event.querySelector(".time").innerText;
+          const eventHours = parseInt(time.split(":")[0]);
+          const eventMinutes = parseInt(time.split(":")[1].split(" ")[0]);
+          const timeOfDay = time.split(" ")[1];
+
+          const eventTime = eventHours + (timeOfDay === "PM" ? 12 : 0);
+          const currentTime = hours;
+
+          const eventTimestamp = eventTime * 60 + eventMinutes;
+          const currentTimestamp = currentTime * 60 + minutes;
+
+          if (currentTimestamp >= eventTimestamp - 30) {
+            event.classList.remove("redacted");
+          }
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        checkTime();
+        setInterval(checkTime, 60000); // Update every minute
+
+        const events = document.querySelectorAll(".event");
+        events.forEach((event) => {
+          event.addEventListener("click", toggleAccordion);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <h1
+        style="
+          color: #5d443f;
+          font-family: 'Pacifico', cursive;
+          font-size: 32px;
+        "
+      >
+        Happy Mother's Day, Alyssa!
+      </h1>
+    </div>
+
+    <div class="timeline">
+      <div class="event redacted">
+        <div class="time">9:00 AM</div>
+        <div class="title">
+          Family Breakfast <i class="icon fas fa-chevron-down"></i>
+        </div>
+        <div class="content">
+          <p>More info here...</p>
+        </div>
+      </div>
+
+      <div class="event redacted">
+        <div class="time">10:30 AM</div>
+        <div class="title">
+          Surprise Event 1 <i class="icon fas fa-chevron-down"></i>
+        </div>
+        <div class="content">
+          <p>More info here...</p>
+        </div>
+      </div>
+
+      <div class="event redacted">
+        <div class="time">1:45 PM</div>
+        <div class="title">
+          Surprise Event 2 <i class="icon fas fa-chevron-down"></i>
+        </div>
+        <div class="content">
+          <p>More info here...</p>
+        </div>
+      </div>
+
+      <div class="event redacted">
+        <div class="time">3:00 PM</div>
+        <div class="title">
+          Surprise Event 3 <i class="icon fas fa-chevron-down"></i>
+        </div>
+        <div class="content">
+          <p>More info here...</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
