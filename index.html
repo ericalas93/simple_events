@@ -103,8 +103,10 @@
 
     <script>
       function toggleAccordion(event) {
-        if (!event.currentTarget.classList.contains("redacted")) {
-          debugger;
+        if (
+          !event.currentTarget.classList.contains("redacted") &&
+          event.target.tagName !== "A"
+        ) {
           const accordion = event.target.closest(".event");
           accordion.classList.toggle("active");
           const icon = accordion.querySelector(".icon");
@@ -207,11 +209,9 @@
           <p>
             Okay, now you're free. Enjoy a 60 minute relaxing massage at
             <a
-              href="https://www.google.com/maps/search/?api=1&query_place_id=ChIJz5DglNzeJIgR8ZgRnJK2A8s"
+              href="comgooglemaps://?q=La+Vida+Salon+And+Spa&center=42.2985949,-83.0264241"
               >La Vida Salon And Spa</a
-            >. The reservation is under Alyssa Morris and is all taken care of.
-
-            <br />
+            >.The reservation is under Alyssa Morris and is all taken care of.
           </p>
         </div>
       </div>
@@ -221,56 +221,56 @@
         <div class="title">Lunch<i class="icon fas fa-chevron-down"></i></div>
         <div class="content">
           <p>
-            Your next stop is near here
+            Your next stop is near
             <a
-              href="https://www.google.com/maps/search/?api=1&query=42.245759,-83.0605804"
+              href="comgooglemaps://?q=Essex+County+Library+-+LaSalle+Branch&center=42.245759,-83.0605804"
               >Essex County Library - LaSalle Branch</a
             >. Pick a spot for enjoy lunch, just make sure you give yourself
             enough time!
             <br />
             <br />
-            A few places near by are:
+            A few places near where you currently are:
           </p>
           <ul>
             <li>
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=42.2936517,-83.0510193"
+                href="comgooglemaps://?q=Bean+Bagz+Cafe&center=42.2936517,-83.0510193"
                 >Bean Bagz Cafe</a
               >
             </li>
             <li>
               <a
-                href="https://www.google.com/maps/search/?api=1&query_place_id=ChdDS1VoTk1HOW5TMFZKUTBGblNVTmhObHBMV1RWUlJSQUJC"
+                href="comgooglemaps://?q=Cafe+March+21&center=42.3151049,-83.0432609"
                 >Cafe March 21</a
               >
             </li>
             <li>
               <a
-                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVOU0zQTNoSE5SUlJBQ"
+                href="comgooglemaps://?q=The+Coffee+Exchange+Inc&center=42.3178768,-83.0415675"
                 >The Coffee Exchange Inc</a
               >
             </li>
             <li>
               <a
-                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVOXRrZ3d0Um1wM1JSQUJC"
+                href="comgooglemaps://?q=Serratore+Bistro-Café&center=42.3176058,-83.0425212"
                 >Serratore Bistro-Cafe</a
               >
             </li>
           </ul>
           <p>
-            You're next destination is also near a few good places to enjoy a
+            Your next destination is also near a few good places to enjoy a
             quick bite to eat. Consider checking these places out:
           </p>
           <ul>
             <li>
               <a
-                href="https://www.google.com/maps/search/?api=1&query_place_id=ChdDS1VoTk0nOS5TUFZKUTBGblNVUkNPVXBwU25SQlJSQUJD"
+                href="comgooglemaps://?q=Kava+Cafe+%26+Bakery&center=42.2487705,-83.0646362"
                 >Kava Cafe & Bakery</a
               >
             </li>
             <li>
               <a
-                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVUlZObkl6T0ZoQkE"
+                href="comgooglemaps://?q=Starbucks&center=42.249441,-83.0640483"
                 >Starbucks</a
               >
             </li>
@@ -285,10 +285,12 @@
           <p>
             Enjoy a 60 minute float. There will be no screaming, no yelling, no
             Minnie, just you and your thoughts. Might even be a good time to
-            catch a nap without worrying about a baby that needs to eat! <br />
+            catch a nap without worrying about a baby that needs to eat!
+            <br />
+            <br />
             Stop by at
             <a
-              href="https://www.google.com/maps/search/?api=1&query=42.2465068,-83.0622549"
+              href="comgooglemaps://?q=Float+Lasalle&center=42.2465068,-83.0648298"
               >Float Lasalle</a
             >
             the reservation should be under Alyssa Morris.
