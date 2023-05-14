@@ -1,8 +1,13 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -43,9 +48,9 @@
 
       .event .title {
         margin-top: 10px;
-        font-size: 24px;
+        font-size: 30px;
         color: #5d443f; /* Dark brown color */
-        font-family: "Pacifico", cursive; /* Handwritten font */
+        font-family: "Sacramento", cursive; /* Handwritten font */
       }
 
       .event .content {
@@ -95,10 +100,7 @@
         transform: rotate(180deg);
       }
     </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
-      rel="stylesheet"
-    />
+
     <script>
       function toggleAccordion(event) {
         if (!event.currentTarget.classList.contains("redacted")) {
@@ -111,7 +113,24 @@
         }
       }
 
+      function isTodayMay20th2023() {
+        var today = new Date();
+
+        // Make sure to account for 0-based month in JavaScript
+        var targetDate = new Date(2023, 4, 20); // 4 corresponds to May
+
+        // Compare dates only, not times
+        return (
+          today.getDate() === targetDate.getDate() &&
+          today.getMonth() === targetDate.getMonth() &&
+          today.getFullYear() === targetDate.getFullYear()
+        );
+      }
+
       function checkTime() {
+        if (!isTodayMay20th2023()) {
+          // return;
+        }
         const now = new Date();
         const hours = now.getHours();
         const minutes = now.getMinutes();
@@ -151,8 +170,8 @@
       <h1
         style="
           color: #5d443f;
-          font-family: 'Pacifico', cursive;
-          font-size: 32px;
+          font-family: 'Sacramento', cursive;
+          font-size: 40px;
         "
       >
         Happy Mother's Day, Alyssa!
@@ -166,37 +185,128 @@
           Family Breakfast <i class="icon fas fa-chevron-down"></i>
         </div>
         <div class="content">
-          <p>More info here...</p>
+          <p>
+            Your choice between French Toast and bacon or a more traditional
+            breakfast of eggs, toast, bacon, hash. I'll try my best to do this
+            solo with the kiddos, but we may need your help!
+
+            <br />
+            <br />
+            You'll need to leave for your next event about 30 minutes before, so
+            be ready to leave by 10!
+          </p>
         </div>
       </div>
 
       <div class="event redacted">
         <div class="time">10:30 AM</div>
         <div class="title">
-          Surprise Event 1 <i class="icon fas fa-chevron-down"></i>
+          Relaxing Massage <i class="icon fas fa-chevron-down"></i>
         </div>
         <div class="content">
-          <p>More info here...</p>
+          <p>
+            Okay, now you're free. Enjoy a 60 minute relaxing massage at
+            <a
+              href="https://www.google.com/maps/search/?api=1&query_place_id=ChIJz5DglNzeJIgR8ZgRnJK2A8s"
+              >La Vida Salon And Spa</a
+            >. The reservation is under Alyssa Morris and is all taken care of.
+
+            <br />
+          </p>
+        </div>
+      </div>
+
+      <div class="event redacted">
+        <div class="time">11:45 AM</div>
+        <div class="title">Lunch<i class="icon fas fa-chevron-down"></i></div>
+        <div class="content">
+          <p>
+            Your next stop is near here
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=42.245759,-83.0605804"
+              >Essex County Library - LaSalle Branch</a
+            >. Pick a spot for enjoy lunch, just make sure you give yourself
+            enough time!
+            <br />
+            <br />
+            A few places near by are:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=42.2936517,-83.0510193"
+                >Bean Bagz Cafe</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query_place_id=ChdDS1VoTk1HOW5TMFZKUTBGblNVTmhObHBMV1RWUlJSQUJC"
+                >Cafe March 21</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVOU0zQTNoSE5SUlJBQ"
+                >The Coffee Exchange Inc</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVOXRrZ3d0Um1wM1JSQUJC"
+                >Serratore Bistro-Cafe</a
+              >
+            </li>
+          </ul>
+          <p>
+            You're next destination is also near a few good places to enjoy a
+            quick bite to eat. Consider checking these places out:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query_place_id=ChdDS1VoTk0nOS5TUFZKUTBGblNVUkNPVXBwU25SQlJSQUJD"
+                >Kava Cafe & Bakery</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query_place_id=ChZDS1VoTk1HOW5TMFZKUTBGblNVUlZObkl6T0ZoQkE"
+                >Starbucks</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
 
       <div class="event redacted">
         <div class="time">1:45 PM</div>
-        <div class="title">
-          Surprise Event 2 <i class="icon fas fa-chevron-down"></i>
-        </div>
+        <div class="title">Float<i class="icon fas fa-chevron-down"></i></div>
         <div class="content">
-          <p>More info here...</p>
+          <p>
+            Enjoy a 60 minute float. There will be no screaming, no yelling, no
+            Minnie, just you and your thoughts. Might even be a good time to
+            catch a nap without worrying about a baby that needs to eat! <br />
+            Stop by at
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=42.2465068,-83.0622549"
+              >Float Lasalle</a
+            >
+            the reservation should be under Alyssa Morris.
+          </p>
         </div>
       </div>
 
       <div class="event redacted">
         <div class="time">3:00 PM</div>
         <div class="title">
-          Surprise Event 3 <i class="icon fas fa-chevron-down"></i>
+          Pincic with the gang!<i class="icon fas fa-chevron-down"></i>
         </div>
         <div class="content">
-          <p>More info here...</p>
+          <p>
+            Okay, we miss you. Dada could use his partner, come home to a nice
+            picnic prepared by Aeris, Felix, and Dada! (but also you might need
+            to help, who knows how things are going at this point!)
+          </p>
         </div>
       </div>
     </div>
